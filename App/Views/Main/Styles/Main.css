@@ -1,0 +1,4 @@
+body { background: #ededed; }
+.errorbox { position: absolute; top: 200; left: 0; right: 0; margin: auto; border-radius: 10px; padding: 20px; border: solid 1px #4f4f4f; width: 600px; height: auto; }
+.errorbox h1 { font-size: 24pt; font-family: 'Tahoma'; color: #A52A2A; -webkit-margin-after: 0; -webkit-margin-before: 0; }
+.errorbox span { font-size: 14pt; font-family: 'Tahoma'; color: #A52A2A; }

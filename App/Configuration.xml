@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<config> 
+    <database>
+        <server>localhost</server>
+        <user>root</user>
+        <password>кщще</password>
+        <name>database</name>
+    </database> 
+</config>
