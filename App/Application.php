@@ -23,7 +23,8 @@ class Application
     {
         Application::Initialize();
         //Start
-
+        $res = Application::$DB->query("SELECT * FROM  `Users`");
+        var_dump($res);
 
     }
 }

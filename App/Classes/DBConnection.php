@@ -21,8 +21,7 @@ class DBConnection
 			Application::$Config->dbname
 		) 
 			or (new Error(__FILE__, __LINE__, "Not connect to database", "Incorrect connection configuration: host, user, password or name database."))->Output();
-
-		//mysqli_select_db($this->Connection, DBConfig::$Name) or die ("Not db");
+		mysqli_select_db($this->Connection, Application::$Config->dbname) or die ("Not db");
 	}
 
 	public function query($sql)
