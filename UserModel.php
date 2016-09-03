@@ -371,23 +371,6 @@ class Collection extends Object implements IteratorAggregate, ArrayAccess, Count
 		return ($count >= 1)? $this->Collection[$count - 1] : null;
 	}
 
-	private function __sort($arg1, $arg2, $sorted)
-	{
-		return ($arg1->$sorted >= $arg2->$sorted)? 1 : -1;
-	}
-
-	public function sort()
-	{
-		$arr = $this->Collection;
-		ussort($arr, "__sort");
-		return new Collection($this->Type, $this->Collection);
-	}
-
-	public function where()
-	{
-
-	}
-
 	public function toString()
 	{
 		$responce = "\"".$this->Type."Collection\": [ ";
