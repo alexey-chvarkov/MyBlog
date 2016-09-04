@@ -4,8 +4,10 @@ namespace App;
 
 use App\Classes\Error as Error;
 use App\Classes\Config as Config;
-use App\Classes\DBConnection as DBConnection;
-use App\Classes\DB as DB;
+
+
+
+
 
 class Application
 {
@@ -23,8 +25,8 @@ class Application
     {
         Application::Initialize();
         //Start
-        $res = Application::$DB->query("SELECT * FROM  `Users`");
-        var_dump($res);
+        echo "<h1> Всего: ".Application::$DB->Users->count()."</h1>";
+        
 
     }
 }
