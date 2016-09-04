@@ -18,6 +18,14 @@ class UserCollection extends Collection
 			$this->add(new UserRow($this->Connection, new User($value["UserId"], $value["Login"], $value["Password"], $value["Age"], $value["About"], $value["DateReg"])));
 	}
 
+	public function whereId($id)
+	{
+		foreach ($this as $user)
+			if ($user->UserId == $id)
+				return $user;
+		return null;
+	}
+
 }
 
 

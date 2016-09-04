@@ -11,6 +11,8 @@ class Config
     public $dbpass;
     public $dbname;
 
+    public $templateName;
+
     public function __construct()
     {
         if (file_exists($this->path)) {
@@ -20,6 +22,7 @@ class Config
                 $this->dbuser = $config->database->user;
                 $this->dbpassword = $config->database->password;
                 $this->dbname = $config->database->name;
+                $this->templateName = $config->template->name;
             }
             catch (Exception $e){
                 (new Error(__FILE__, __LINE__, "Incorrect configuration file", $e->getMessage()))->Output();

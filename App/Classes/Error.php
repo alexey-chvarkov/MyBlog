@@ -2,6 +2,8 @@
 
 namespace App\Classes; 
 
+use App\Application as Application;
+
 class Error
 {
     public $file;
@@ -19,7 +21,7 @@ class Error
 
     public function Output()
     {
-        require '../App/Views/Main/Error.php';
+        require '../App/Views/'.Application::$Config->templateName.'/Error.php';
     }
 
 }

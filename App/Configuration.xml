@@ -5,5 +5,8 @@
         <user>root</user>
         <password>кщще</password>
         <name>database</name>
-    </database> 
+    </database>
+    <template>
+        <name>Main</name>
+    </template>
 </config>

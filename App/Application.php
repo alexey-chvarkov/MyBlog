@@ -5,7 +5,7 @@ namespace App;
 use App\Classes\Error as Error;
 use App\Classes\Config as Config;
 
-
+use App\Controllers\UsersController as UsersController;
 
 
 
@@ -24,8 +24,16 @@ class Application
     static public function Main()
     {
         Application::Initialize();
-        //Start
-        echo "<h1> Всего: ".Application::$DB->Users->count()."</h1>";
+        //Start application
+        switch ($_REQUEST["p"])
+        {
+            case "users":
+                new UsersController();
+            break;
+            default:
+                (new Error(null, null, "Not found page", "Try enter other URL."))->Output();
+            break;
+        }
         
 
     }
