@@ -16,7 +16,7 @@ class UsersController
     {
 
         $id = $_REQUEST["id"];
-        if (preg_match("/[^0-9]/s", $id))
+        if (!$id || preg_match("/[^0-9]/s", $id))
         {
             $this->metaTitle = "All users";
             $this->title = "All users: ".Application::$DB->Users->count();
