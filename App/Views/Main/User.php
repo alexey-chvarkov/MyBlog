@@ -1,4 +1,4 @@
-<table width="100%" border="1">
+<table width="100%" border="0">
     <tr><td>Property</td><td>Value</td></tr>
     <tr><td>UserId</td><td><?php echo $user->UserId; ?></td></tr>
     <tr><td>Login</td><td><?php echo $user->Login; ?></td></tr>

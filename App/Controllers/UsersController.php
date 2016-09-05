@@ -3,24 +3,25 @@
 namespace App\Controllers;
 
 use App\Application as Application; 
+use App\Classes\Controller as Controller;
 use App\Classes\Error as Error;
 
-class UsersController
+class UsersController extends Controller
 {
-    public $metaTitle;
-
-    public $title;
-
-    //Logic
     public function __construct()
     {
+        $this->main();
+    }
 
+    public function main()
+    {
+        
         $id = $_REQUEST["id"];
         if (!$id || preg_match("/[^0-9]/s", $id))
         {
-            $this->metaTitle = "All users";
             $this->title = "All users: ".Application::$DB->Users->count();
-            require '../App/Views/'.Application::$Config->templateName.'/Header.php';
+            $this->setMeta("All users", "utf-8", "All users", "No tags", "No author");
+            $this->header();
             require '../App/Views/'.Application::$Config->templateName.'/Users.php';
         }
         else
@@ -28,16 +29,15 @@ class UsersController
             $user = Application::$DB->Users->whereId($id);
             if ($user)
             {
-                $this->metaTitle = "User: '$user->Login'";
                 $this->title = "User: '$user->Login'";
-                require '../App/Views/'.Application::$Config->templateName.'/Header.php';
+                $this->setMeta("User: '$user->Login'", "utf-8", "Info user: '$user->Login'", "No tags", "No author");
+                $this->header();
                 require '../App/Views/'.Application::$Config->templateName.'/User.php';
             }
             else
                 (new Error(null, null, "Not found page", "Try enter other URL."))->Output();
         }
-
-        //Footer
-        require '../App/Views/'.Application::$Config->templateName.'/Footer.php';
+        $this->view("Message");
     }
+
 }
