@@ -10,5 +10,5 @@
     </head>
     <body>
         <div class="headbox">
-            <h1><?php echo $this->title ?></h1>
+            <h1>MyGroundworkMVC</h1>
         </div>

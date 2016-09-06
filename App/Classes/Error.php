@@ -11,17 +11,14 @@ class Error
     public $title;
     public $description;
 
-    public function __construct($file, $line, $title = "Unknow", $description = "")
+    public function __construct($title = "Unknow", $description = "An unknown error occurred", $file = null, $line = null)
     {
         $this->file = $file;
         $this->line = $line;
         $this->title = $title;
         $this->description = $description;
-    }
-
-    public function Output()
-    {
-        require '../App/Views/'.Application::$Config->templateName.'/Error.php';
+        include '../App/Views/'.Application::$Config->templateName.'/Error.php';
+        exit;
     }
 
 }

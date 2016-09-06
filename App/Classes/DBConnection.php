@@ -12,9 +12,9 @@ class DBConnection
 	public function __construct()
 	{
 		$this->Connection = mysqli_connect(Application::$Config->dbserver, Application::$Config->dbuser, Application::$Config->dbpassword) 
-			or (new Error(__FILE__, __LINE__, "No connection to database", "Incorrect connection data: host, user, password"))->Output();
+			or new Error("No connection to database", "Incorrect connection data: host, user, password", __FILE__, __LINE__);
 		mysqli_select_db($this->Connection, Application::$Config->dbname) 
-			or (new Error(__FILE__, __LINE__, "Databases with the same name is not found", "Incorrect connection data: database name"))->Output();
+			or new Error("Databases with the same name is not found", "Incorrect connection data: database name", __FILE__, __LINE__);
 
 	}
 

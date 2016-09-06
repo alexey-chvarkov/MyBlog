@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Application as Application; 
 use App\Classes\Controller as Controller;
 use App\Classes\Error as Error;
+use App\Classes\Message as Message;
 
 class UsersController extends Controller
 {
@@ -19,7 +20,6 @@ class UsersController extends Controller
         $id = $_REQUEST["id"];
         if (!$id || preg_match("/[^0-9]/s", $id))
         {
-            $this->title = "All users: ".Application::$DB->Users->count();
             $this->setMeta("All users", "utf-8", "All users", "No tags", "No author");
             $this->header();
             require '../App/Views/'.Application::$Config->templateName.'/Users.php';
@@ -29,15 +29,13 @@ class UsersController extends Controller
             $user = Application::$DB->Users->whereId($id);
             if ($user)
             {
-                $this->title = "User: '$user->Login'";
                 $this->setMeta("User: '$user->Login'", "utf-8", "Info user: '$user->Login'", "No tags", "No author");
                 $this->header();
                 require '../App/Views/'.Application::$Config->templateName.'/User.php';
             }
             else
-                (new Error(null, null, "Not found page", "Try enter other URL."))->Output();
+                new Error("Not found page", "Try enter other URL.");
         }
-        $this->view("Message");
     }
 
 }

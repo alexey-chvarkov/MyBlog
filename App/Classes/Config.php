@@ -25,11 +25,11 @@ class Config
                 $this->templateName = $config->template->name;
             }
             catch (Exception $e){
-                (new Error(__FILE__, __LINE__, "Incorrect configuration file", $e->getMessage()))->Output();
+                new Error("Incorrect configuration file", $e->getMessage(), __FILE__, __LINE__);
             }
         } 
         else {
-            (new Error(__FILE__, __LINE__, "Not finding a configuration file", "Not finding file '$this->path'"))->Output();
+            new Error("Not finding a configuration file", "Not finding file '$this->path'", __FILE__, __LINE__);
         }
     }
 

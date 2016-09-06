@@ -10,7 +10,7 @@ body { background: #ededed; padding: 0; margin: 0; }
 .mesred { background: darkred; color: white; }
 .mesgreen { background: darkgreen; color: white; }
 .mesyellow { background: #F5D033; color: black; }
-.messagebox { opacity: 0.75; position: absolute; top: 0; margin: 10px; width: 550px; height: auto; padding: 15px; border-radius: 10px; }
+.messagebox { opacity: 0.85; position: absolute; top: 0; margin: 10px; width: 550px; height: auto; padding: 15px; border-radius: 10px; }
 .messagebox h1 { font-size: 16pt; font-family: 'Tahoma'; -webkit-margin-after: 0; -webkit-margin-before: 0; }
 .messagebox span { font-size: 11pt; font-family: 'Tahoma'; }
 .messagebox:hover { opacity: 1; }
