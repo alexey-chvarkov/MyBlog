@@ -29,8 +29,9 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 .contentbox { width: 800px; height: auto; padding: 15px; border: solid 1px #999; background: #cdcdcd; margin: auto; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; }
 .contentbox h1 { font-size: 20pt; font-family: 'Tahoma'; color: #A52A2A; -webkit-margin-after: 0; -webkit-margin-before: 0; }
 .contentbox span { font-family: 'Tahoma'; font-size: 14pt; color: #333333; }
-.inputbox { padding: 5px; }
-
+.inputbox { padding: 5px; width: 400px; }
+.inputbox input { float: right; margin-left: 10px; }
+ 
 .mesred { background: darkred; color: white; }
 .mesgreen { background: darkgreen; color: white; }
 .mesyellow { background: #F5D033; color: black; }

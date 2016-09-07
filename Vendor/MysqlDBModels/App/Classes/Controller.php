@@ -3,8 +3,9 @@
 namespace App\Classes;
 
 use App\Application as Application; 
+use App\Classes\Object as Object; 
 
-abstract class Controller
+abstract class Controller extends Object
 {
     protected $metaTitle;
     protected $metaCharset = "utf-8";
@@ -13,6 +14,21 @@ abstract class Controller
     protected $metaAuthor;
 
     protected $copyright;
+
+    public function __construct($type = "Controller")
+    {
+        $this->setType($type);
+    }
+
+    protected function setType($type)
+    {
+        parent::_construct($type);
+    }
+
+    public function getType()
+    {
+        return $this->Type;
+    }
 
     protected function setMeta($metatitle, $charset, $decription, $keywords, $author)
     {
@@ -39,4 +55,26 @@ abstract class Controller
     }
 
     protected abstract function main();
+
+    public function toString()
+	{
+		return "{
+            \"Type\": \"$this->Type\",
+			\"MetaTitle\": \"$this->metaTitle\",
+			\"MetaCharset\": $this->metaCharset,
+			\"MetaDescription\": \"$this->metaDescription\",
+            \"MetaKeywords\": \"$this->metaKeywords\",
+            \"MetaAuthor\": \"$this->metaAuthor\"
+		}";
+	}
+
+	public function isEmpty()
+	{
+		return (!$this->Name && !$this->Created && !$this->Comment);
+	}
+
+	public function equal($object)
+	{
+		return ($this == $object);
+	}
 }

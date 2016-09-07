@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Application as Application; 
+use App\Classes\Object as Object;
 use App\Classes\Controller as Controller;
 use App\Classes\Error as Error;
 use App\Classes\Message as Message;
@@ -20,5 +21,19 @@ class SettingsController extends Controller
         $this->view("Settings");
         $this->footer();
     }
+
+    static public function tryConnect_Click()
+    {
+        new Message("TRY CLICK", "OK");
+    }
+
+    static public function set_Click()
+    {
+        new Message("SET CLICK", "OK");
+    }
+
+
+
+
 
 }

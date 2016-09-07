@@ -14,6 +14,7 @@ class Application
 
     static public $Config;
     static public $DB;
+    static public $Controller;
 
     static public function Initialize()
     {
@@ -34,8 +35,8 @@ class Application
                 (new Error(null, null, "Not found page", "Try enter other URL."))->Output();
             break;
         }
-        
-
     }
+
+    
 }
 

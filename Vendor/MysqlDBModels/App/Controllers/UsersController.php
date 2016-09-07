@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Application as Application; 
+use App\Classes\Object as Object;
 use App\Classes\Controller as Controller;
 use App\Classes\Error as Error;
 use App\Classes\Message as Message;
@@ -37,5 +38,6 @@ class UsersController extends Controller
                 new Error("Not found page", "Try enter other URL.");
         }
     }
+
 
 }
