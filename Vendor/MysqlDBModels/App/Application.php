@@ -19,22 +19,39 @@ class Application
     static public function Initialize()
     {
         Application::$Config = new Config();
-        Application::$DB = new DB();
+        //Application::$DB = new DB();
+    }
+
+    static public function LoadController($Controller)
+    {
+        Application::$Controller = $Controller;
     }
 
     static public function Main()
     {
         Application::Initialize();
         //Start application
-        switch ($_REQUEST["p"])
+        if(!$_GET["type"] && !$_GET["method"])
         {
-            case "settings":
-                new SettingsController();
-            break;
-            default:
-                (new Error(null, null, "Not found page", "Try enter other URL."))->Output();
-            break;
+            switch ($_REQUEST["p"])
+            {
+                case "settings": Application::LoadController(new SettingsController()); break;
+                default: new Error("Not found page", "Try enter other URL."); break;
+            }
         }
+        else
+        {
+            switch ($_GET["type"])
+            {
+                case "ajaxquery":
+                    switch ($_GET["method"])
+                    {
+                        case "settings_isconnect" : SettingsController::isConnect($_GET["dbserver"], $_GET["dbuser"], $_GET["dbpassword"], $_GET["dbname"]); break;
+                    }
+                break;
+                default: new Error("Not found page", "Try enter other URL."); break;
+            }
+        }       
     }
 
     

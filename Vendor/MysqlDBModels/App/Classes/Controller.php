@@ -15,6 +15,8 @@ abstract class Controller extends Object
 
     protected $copyright;
 
+    public $scriptName;
+
     public function __construct($type = "Controller")
     {
         $this->setType($type);

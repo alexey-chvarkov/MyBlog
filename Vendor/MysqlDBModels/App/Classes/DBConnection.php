@@ -18,6 +18,18 @@ class DBConnection
 
 	}
 
+	static public function tryConnect($server, $dbuser, $password, $dbname)
+	{
+		mysqli_connect($server, $dbuser, $password);
+		mysqli_select_db($Connection, $dbname);
+		return mysqli_ping($Connection);
+	}
+
+	public function ping()
+	{
+		return mysqli_ping($this->Connection);
+	}
+
 	public function query($sql)
 	{
 		$res = mysqli_query($this->Connection, $sql);
