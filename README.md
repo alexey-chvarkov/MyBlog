@@ -1,1 +1,2 @@
+Test blog
 # Blog
