@@ -13,6 +13,20 @@ class Post extends Object
 	protected $DateCreated;
 	protected $Views;
 
+	public function __get($name)
+	{
+		switch($name)
+		{
+			case "PostId": return $this->PostId;  break;
+			case "Title": return $this->Title;  break;
+			case "Preview": return $this->Preview;  break;
+			case "Content": return $this->Content;  break;
+			case "DateCreated": return $this->DateCreated;  break;
+			case "Views": return $this->Views;  break;
+			default: return null; break;
+		}
+	}
+
 	protected function setType($Type)
 	{
 		parent::__construct($Type);

@@ -7,7 +7,6 @@
         <name>database</name>
     </database>
     <site>
-        <template>Default</template>
         <name>MyBlog</name>
         <copyright>(c) Alexey Chvarkov 2016</copyright>
     </site>

@@ -26,7 +26,6 @@ class Configuration
                 $this->DBUser = $config->database->user;
                 $this->DBPassword = $config->database->password;
                 $this->DBName = $config->database->name;
-                $this->Template = $config->site->template;
                 $this->SiteName = $config->site->name;
                 $this->Copyright = $config->site->copyright;
             }

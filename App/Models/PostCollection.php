@@ -39,10 +39,7 @@ class PostCollection extends Collection
 
 	public function getPostById($id)
 	{
-		foreach ($this as $post)
-			if ($post->PostId == $id)
-				return $Post;
-		return null;
+        return (new PostCollection("`PostId` = $id"))->first();
 	}
 
     public function where($newwhere)

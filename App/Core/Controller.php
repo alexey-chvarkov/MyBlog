@@ -23,17 +23,17 @@ abstract class Controller
 
     protected function header()
     {
-        include '../App/Views/'.Application::$Configuration->Template.'/Header.php';
+        include '../App/Views/Header.php';
     }
 
     protected function view($viewName)
     {
-        include '../App/Views/'.Application::$Configuration->Template.'/'.$viewName.'.php';
+        include '../App/Views/'.$viewName.'.php';
     }
 
     protected function footer()
     {
-        include '../App/Views/'.Application::$Configuration->Template.'/Footer.php';
+        include '../App/Views/Footer.php';
     }
 
     protected abstract function main();

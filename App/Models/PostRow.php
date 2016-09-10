@@ -6,7 +6,6 @@ use App\Application as Application;
 
 class PostRow extends Post
 {
-
 	public function __set($name, $value)
 	{
 		try

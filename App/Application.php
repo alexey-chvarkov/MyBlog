@@ -4,8 +4,11 @@ namespace App;
 
 use App\Core\Configuration as Configuration;
 use App\Core\Database as Database;
-use App\Models\Post as Post;
+
 use App\Models\PostCollection as PostCollection;
+
+use App\Controllers\MainController as MainController;
+use App\Controllers\PostController as PostController;
 
 class Application 
 {
@@ -36,14 +39,12 @@ class Application
             switch ($_GET["p"])
             {
                 case "main": 
-                    //echo Application::$Database->Posts->where("`Title` = 'Hello world'")->where("`PostId` = 3")->toString();
-                    echo "<br/><br/>";
-                    Application::$Database->Posts[1]->PostId=777;
-                    echo "<br/><br/>";
-                    echo Application::$Database->Posts->toString();
-                    
+                    new MainController();
                 break;
-                default: die("exit"); break;
+                case "post":
+                    new PostController();
+                break;
+                default: exit; break;
             }
         }
     }
