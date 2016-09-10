@@ -11,6 +11,7 @@ class Database
 	private $Connection;
 
     public $Posts;
+	public $MenuItems;
 
 	public function __construct()
 	{

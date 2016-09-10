@@ -35,7 +35,7 @@ class PostRow extends Post
 	{
 		try
 		{
-			Application::$Database->query("SELECT `$name` FROM `Users` WHERE 
+			Application::$Database->query("SELECT `$name` FROM `Posts` WHERE 
 				`PostId` = $this->PostId and 
 				`Title` = '$this->Title' and
 				`Preview` = '$this->Preview' and

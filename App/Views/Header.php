@@ -16,10 +16,9 @@
             <nav class="menu">
             <h1><?php echo Application::$Configuration->SiteName; ?></h1>
                 <ul>
-                    <li><a href="#">Main</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contacts</a></li>
+                    <?php foreach(Application::$Database->MenuItems as $MenuItem): ?>
+                        <li><a href="<?php echo $MenuItem->getValue()->URL; ?>"><?php echo $MenuItem->getValue()->Title; ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
             </nav>
         </div>
