@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<config> 
+    <database>
+        <server>localhost</server>
+        <user>root</user>
+        <password>кщще</password>
+        <name>database</name>
+    </database>
+    <site>
+        <template>Default</template>
+        <name>MyBlog</name>
+        <copyright>(c) Alexey Chvarkov 2016</copyright>
+    </site>
+</config>

@@ -1,2 +1,2 @@
 # MyBlog
-Test
+My test MVC project
