@@ -8,6 +8,8 @@
     </database>
     <site>
         <name>MyBlog</name>
+        <background>assets/images/background.jpg</background>
+        <adminpage>admin</adminpage>
         <copyright>(c) Alexey Chvarkov 2016</copyright>
     </site>
 </config>

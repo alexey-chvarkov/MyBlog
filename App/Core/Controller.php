@@ -12,6 +12,8 @@ abstract class Controller
     protected $metaKeywords;
     protected $metaAuthor;
 
+    protected $pageTitle;
+
     protected $MenuItems;
     protected $SideItems;
 

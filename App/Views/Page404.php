@@ -1,3 +1,4 @@
+<?php use App\Application as Application; ?>
 <!DOCTYPE XHTML>
 <html>
     <head>
@@ -9,7 +10,7 @@
         <link rel="stylesheet" href="assets/css/main.css" />
         <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     </head>
-    <body>
+    <body style="background: url('<?php echo Application::$Configuration->Background; ?>');">
     <div class="errorbox" align="center">
         <h1>404</h1>
         <h2>Page not found</h2>

@@ -1,0 +1,33 @@
+body { padding: 0; margin: 0; font-family: ''Times New Roman', Times, serif'; font-size:12pt; 
+background-image: -webkit-gradient(linear, left top, left bottom, from(#bdbdbd), to(#ededed)); 
+background-image: -webkit-linear-gradient(top, #bdbdbd, #ededed); background-image: 
+-moz-linear-gradient(top, #bdbdbd, #ededed); background-image: 
+linear-gradient(to bottom, #bdbdbd, #ededed);   }
+
+h1 { font-size: 16pt; color: #ededed; -webkit-margin-after: 0; -webkit-margin-before: 0; }
+h2 { font-size: 14pt; color: #A52A2A; -webkit-margin-after: 0.1em; -webkit-margin-before: 0.1em; }
+a { text-decoration: none; color: rgb(60, 65, 70); cursor: pointer; }
+a:hover { text-decoration: underline; color: #A52A2A; }
+
+
+.header { width: 100%; height: auto; background: rgb(60, 65, 70 ); padding: 15px; box-sizing: border-box; }
+.header h1 { float: left; }
+.header a { color: #ededed; font-size: 16pt; float: right;  }
+.header a:hover { text-decoration: underline; }
+
+.col-small { width: 300px; height: auto; box-sizing: border-box; padding: 0; float: left; }
+
+.col-small div { padding: 10px 0; }
+.col-small h2 { margin: 0 10px; }
+.col-small ul { -webkit-padding-start: 0; margin: 0; }
+.col-small ul li { display: block; margin: 0; padding: 8px 10px; border-bottom: solid 1px rgb(180, 185, 190 );  }
+.col-small ul li span { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 4px; background: #A52A2A; color: #fff; margin-left: 14px; margin-top: -4px;}
+/*
+.col-small ul li:hover { background: rgb(60, 65, 70 ); }
+.col-small ul li:hover span { background: #ededed; color: rgb(60, 65, 75); }
+.col-small ul li:hover a { color: #ededed; }
+*/
+.col-big { width: calc(100% - 300px) ; height: auto; box-sizing: border-box; padding: 15px; left: 300px; float: right; position: relative; position: absolute;  }
+.col-big h1 { color: #A52A2A; }
+
+.footer { font-size: 11pt; color: rgb(60, 65, 70 ); width: 100%; height: auto; background: none; border-top: solid 1px rgb(60, 65, 70 ); padding: 10px; box-sizing: border-box; }

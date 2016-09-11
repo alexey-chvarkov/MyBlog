@@ -11,8 +11,9 @@ class Configuration
     public $DBPassword;
     public $DBName;
 
-    public $Template;
     public $SiteName;
+    public $Background;
+    public $AdminPage;
     public $Copyright;
 
     public $templateName;
@@ -27,6 +28,8 @@ class Configuration
                 $this->DBPassword = $config->database->password;
                 $this->DBName = $config->database->name;
                 $this->SiteName = $config->site->name;
+                $this->Background = $config->site->background;
+                $this->AdminPage = $config->site->adminpage;
                 $this->Copyright = $config->site->copyright;
             }
             catch (Exception $e){

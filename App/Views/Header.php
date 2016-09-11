@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="assets/css/main.css" />
         <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     </head>
-    <body>
+    <body style="background: url('<?php echo Application::$Configuration->Background; ?>');">
         <div class="head">
             
             <nav class="menu">

@@ -9,6 +9,7 @@ use App\Models\PostCollection as PostCollection;
 use App\Models\MenuItemCollection as MenuItemCollection;
 use App\Models\SideItemCollection as SideItemCollection;
 
+use App\Controllers\AdminController as AdminController;
 use App\Controllers\MainController as MainController;
 use App\Controllers\PostController as PostController;
 
@@ -45,6 +46,9 @@ class Application
         {
             switch ($_GET["p"])
             {
+                case Application::$Configuration->AdminPage:
+                    new AdminController();
+                break;
                 case "main": 
                     new MainController();
                 break;
