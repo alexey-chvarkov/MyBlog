@@ -16,7 +16,7 @@
             <nav class="menu">
             <h1><?php echo Application::$Configuration->SiteName; ?></h1>
                 <ul>
-                    <?php foreach(Application::$Database->MenuItems as $MenuItem): ?>
+                    <?php foreach($this->MenuItems as $MenuItem): ?>
                         <li><a href="<?php echo $MenuItem->getValue()->URL; ?>"><?php echo $MenuItem->getValue()->Title; ?></a></li>
                     <?php endforeach; ?>
                 </ul>
@@ -26,29 +26,12 @@
             <div class ="content">
                 <div class="col-small">
                     <div class="sidebar">
-                        <div class="sidebox">
-                            <h3>About</h3>
-                            <span>Text Publishing is an independent, Melbourne-based publisher of literary fiction and non-fiction. Text won the Australian Book Industry Awards (ABIA) Small Publisher of the Year in 2012, 2013 and 2014.<span>
-                        </div>
-                        <div class="sidebox">
-                            <h3>Most view</h3>
-                            <div class="post-item">
-                                <b>Why do we use it?</b><br />
-                                <span>It is a long established fact that a reader will be distracted by the readable content of a page when looki...</span>
+                        <?php foreach ($this->SideItems as $SideItem): ?>
+                            <div class="sidebox">
+                                <h3><?php echo $SideItem->getValue()->Title; ?></h3>
+                                <div><?php echo $SideItem->getValue()->Content; ?></div>
                             </div>
-                            <div class="post-item">
-                                <b>Where does it come from?</b><br />
-                                <span>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical L...</span>
-                            </div>
-                            <div class="post-item">
-                                <b>Where can I get some?</b><br />
-                                <span>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration i...</span>
-                            </div>
-                        </div>
-                        <div class="sidebox">
-                            <h3>Tags</h3>
-                            #lorem #newyear #fish #dog #information
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="col-big">

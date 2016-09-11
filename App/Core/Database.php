@@ -12,6 +12,7 @@ class Database
 
     public $Posts;
 	public $MenuItems;
+	public $SideItems;
 
 	public function __construct()
 	{

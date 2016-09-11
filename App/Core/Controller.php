@@ -12,6 +12,15 @@ abstract class Controller
     protected $metaKeywords;
     protected $metaAuthor;
 
+    protected $MenuItems;
+    protected $SideItems;
+
+    protected function __construct()
+    {
+        $this->MenuItems = Application::$Database->MenuItems;
+        $this->SideItems = Application::$Database->SideItems;
+    }
+
     protected function setMeta($metatitle, $charset, $decription, $keywords, $author)
     {
         $this->metaTitle = $metatitle;
