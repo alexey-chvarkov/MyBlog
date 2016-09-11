@@ -1,4 +1,4 @@
-﻿<?php use App\Application as Application; ?>
+﻿<?php  use App\Application as Application; ?>
 <!DOCTYPE XHTML>
 <html>
     <head>
@@ -19,10 +19,22 @@
             <div>
             <h2>Management</h2>
                 <ul>
-                    <li><a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">Menu</a><span>4</span></li>
-                    <li><a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Side</a><span>2</span></li>
-                    <li><a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=page_manager">Pages</a><span>0</span></li>
-                    <li><a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=post_manager">Posts</a><span>4</span></li>
+                    <li>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">Menu</a>
+                        <span><?php echo Application::$Database->MenuItems->count(); ?></span>
+                    </li>
+                    <li>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Side</a>
+                        <span>2</span>
+                    </li>
+                    <li>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=page_manager">Pages</a>
+                        <span>0</span>
+                    </li>
+                    <li>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=post_manager">Posts</a>
+                        <span>4</span>
+                    </li>
                 </ul>
             </div>
             <div/>

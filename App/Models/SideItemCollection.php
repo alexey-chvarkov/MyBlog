@@ -18,7 +18,7 @@ class SideItemCollection extends Collection
         $this->__update();
     }
 
-    private function __update()
+    public function __update()
     {
         $where = ($this->where && $this->where != "")? "WHERE ".$this->where : "";
         $result = Application::$Database->query("SELECT * FROM `SideItems` $where ORDER BY `Preoritety` DESC");
@@ -37,7 +37,7 @@ class SideItemCollection extends Collection
         return $this;
     }
 
-	public function getPostById($id)
+	public function getSideItemById($id)
 	{
         return (new SideItemCollection("`SideItemId` = $id"))->first();
 	}

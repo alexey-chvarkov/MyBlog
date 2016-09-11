@@ -1,4 +1,5 @@
 <?php use App\Application as Application; ?>
+
                     </div>
                 </div>
                 <div class="footer">

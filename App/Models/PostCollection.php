@@ -18,7 +18,7 @@ class PostCollection extends Collection
         $this->__update();
     }
 
-    private function __update()
+    public function __update()
     {
         $where = ($this->where && $this->where != "")? "WHERE ".$this->where : "";
         $result = Application::$Database->query("SELECT * FROM `Posts` $where");

@@ -18,15 +18,21 @@ class MenuItemCollection extends Collection
         $this->__update();
     }
 
-    private function __update()
+    public function __update()
     {
         $where = ($this->where && $this->where != "")? "WHERE ".$this->where : "";
         $result = Application::$Database->query("SELECT * FROM `MenuItems` $where ORDER BY `Preoritety` DESC");
 		parent::clear();
         foreach ($result as $value)
 			parent::add(new MenuItemRow(new MenuItem($value["MenuItemId"], $value["Title"], $value["URL"], $value["Preoritety"])));
+        $preor = $this->count();
+        foreach ($this as $value)
+        {
+            $value->Preoritety = $preor;
+            $preor--;
+        }
     }
-
+ 
     public function insert($MenuItem)
     {
         $result = Application::$Database->query("INSERT INTO `MenuItems`(`Title`, `URL`, `Preoritety`) 
@@ -37,7 +43,7 @@ class MenuItemCollection extends Collection
         return $this;
     }
 
-	public function getPostById($id)
+	public function getMenuItemById($id)
 	{
         return (new MenuItemCollection("`MenuItemId` = $id"))->first();
 	}

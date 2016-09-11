@@ -10,7 +10,7 @@ class MenuItemRow extends MenuItem
 	{
 		try
 		{
-			$result = Application::$Database->query("UPDATE `MenuItems` SET `$name` = '$value' WHERE `MenuItemId` = ".$this->PostId);
+			$result = Application::$Database->query("UPDATE `MenuItems` SET `$name` = '$value' WHERE `MenuItemId` = ".$this->MenuItemId);
 			if ($result)
 			{
 				switch($name)
@@ -57,6 +57,8 @@ class MenuItemRow extends MenuItem
 				`URL` = '$this->URL' and
 				`Preoritety` = $this->Preoritety
 				");
+			if ($remove)
+				Application::$Database->MenuItems->__update();
 		}
 		catch (Exception $e)
 		{
