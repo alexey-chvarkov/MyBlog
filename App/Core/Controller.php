@@ -17,6 +17,8 @@ abstract class Controller
     protected $MenuItems;
     protected $SideItems;
 
+    protected $Messages;
+
     protected function __construct()
     {
         $this->MenuItems = Application::$Database->MenuItems;

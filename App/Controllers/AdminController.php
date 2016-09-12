@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Application;
+use App\Application as Application;
+use App\Core\Message as Message;
 use App\Core\Controller as Controller;
 
 use App\Models\MenuItem as MenuItem;
@@ -67,6 +68,7 @@ class AdminController extends Controller
             Application::$Database->MenuItems->getMenuItemById($id)->Title = $_REQUEST["menu-item-title_$id"];
             Application::$Database->MenuItems->getMenuItemById($id)->URL = $_REQUEST["menu-item-url_$id"];
             Application::$Database->MenuItems->__update();
+            $this->Messages[] = new Message("Changed menu item.", "Item '".$_REQUEST["menu-item-title_$id"]."' successfully changed.");
         }
     }
 
@@ -98,7 +100,11 @@ class AdminController extends Controller
                         case "menu-item-del":
                             $MenuItem = Application::$Database->MenuItems->getMenuItemById($id);
                             if ($MenuItem)
+                            {
+                                $getTitle = $MenuItem->getValue()->Title;
                                 $MenuItem->remove();
+                                $this->Messages[] = new Message("Deleted menu item.", "Item '$getTitle' successfully deleted.", "red");
+                            }
                         break;
                     }
                 }
@@ -108,7 +114,10 @@ class AdminController extends Controller
                     {
                         case "menu-item-add":
                             if ($_REQUEST["new_title"] && $_REQUEST["new_url"])
+                            {
                                 Application::$Database->MenuItems->insert(new MenuItem(null, $_REQUEST["new_title"], $_REQUEST["new_url"]));
+                                $this->Messages[] = new Message("Added menu item.", "Item '".$_REQUEST["new_title"]."' successfully added.");
+                            }
                         break;
                     }
                 } 
@@ -134,6 +143,8 @@ class AdminController extends Controller
                 case "design_settings": $this->view("Admin/DesignSettingsView");  break;
             }
             $this->view("Admin/Footer");
+            foreach ($this->Messages as $Message)
+                $Message->show();
         }
         else
             $this->view("Page404");

@@ -8,6 +8,7 @@
         <meta name="keywords" content="">
         <meta name="author" content="">
         <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/sys.css" />
         <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     </head>
     <body style="background: url('<?php echo Application::$Configuration->Background; ?>');">

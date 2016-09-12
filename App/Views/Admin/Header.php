@@ -8,6 +8,7 @@
         <meta name="keywords" content="">
         <meta name="author" content="">
         <link rel="stylesheet" href="assets/css/admin.css" />
+        <link rel="stylesheet" href="assets/css/sys.css" />
     </head>
     <body>
         <div class="header">
