@@ -18,19 +18,17 @@ class Configuration
 
     public $templateName;
 
+    private $__config;
+
+    public $Settings = array("db_server", "db_user", "db_password", "db_name", "sitename", 
+        "background", "adminpage", "copyright");
+
     public function __construct()
     {
         if (file_exists($this->path)) {
-            $config = simplexml_load_file($this->path);
+            $this->__config = simplexml_load_file($this->path);
             try {
-                $this->DBServer = $config->database->server;
-                $this->DBUser = $config->database->user;
-                $this->DBPassword = $config->database->password;
-                $this->DBName = $config->database->name;
-                $this->SiteName = $config->site->name;
-                $this->Background = $config->site->background;
-                $this->AdminPage = $config->site->adminpage;
-                $this->Copyright = $config->site->copyright;
+                $this->update();
             }
             catch (Exception $e){
                 (new Error("Incorrect configuration file", $e->getMessage()))->show();
@@ -39,6 +37,34 @@ class Configuration
         else {
             (new Error("Not finding a configuration file", "Not finding file '$this->path'"))-show();
         }
+    }
+
+    private function update()
+    {
+        $this->DBServer = $this->__config->database->server;
+        $this->DBUser = $this->__config->database->user;
+        $this->DBPassword = $this->__config->database->password;
+        $this->DBName = $this->__config->database->name;
+        $this->SiteName = $this->__config->site->name;
+        $this->Background = $this->__config->site->background;
+        $this->AdminPage = $this->__config->site->adminpage;
+        $this->Copyright = $this->__config->site->copyright;
+    }
+
+    public function setValue($name, $value)
+    {
+        switch ($name)
+        {
+            case "db_server": $this->__config->database->server = $value; break;
+            case "db_user": $this->__config->database->user = $value; break;
+            case "db_password": $this->__config->database->password = $value; break;
+            case "db_name": $this->__config->database->name = $value; break;
+            case "sitename": $this->__config->site->name = $value; break;
+            case "background": $this->__config->site->background = $value; break;
+            case "adminpage": $this->__config->site->adminpage = $value; break;
+            case "copyright": $this->__config->site->copyright = $value; break;
+        }
+        $this->__config->saveXML();
     }
 
 }

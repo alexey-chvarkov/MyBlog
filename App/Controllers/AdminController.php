@@ -75,53 +75,12 @@ class AdminController extends Controller
     public function action()
     {
         foreach ($_REQUEST as $key => $value)
-        {
+        {        
             if (stristr($key, "menu-item"))
-            {
-                $params = explode("_", $key);
-                if (count($params) == 2)
-                { 
-                    $name = $params[0];
-                    $id = $params[1];
-                    switch ($name)
-                    {
-                        case "menu-item-inc":
-                            $this->menuItemPreoritetyInc($id);
-                        break;
-                        case "menu-item-dec":
-                            $this->menuItemPreoritetyDec($id);
-                        break;
-                        case "menu-item-change":
-                            $this->ChangeMenuItemId = $id;
-                        break;
-                        case "menu-item-save":
-                            $this->menuItemSave($id);
-                        break;
-                        case "menu-item-del":
-                            $MenuItem = Application::$Database->MenuItems->getMenuItemById($id);
-                            if ($MenuItem)
-                            {
-                                $getTitle = $MenuItem->getValue()->Title;
-                                $MenuItem->remove();
-                                $this->Messages[] = new Message("Deleted menu item.", "Item '$getTitle' successfully deleted.", "red");
-                            }
-                        break;
-                    }
-                }
-                if (count($params) == 1)
-                {
-                    switch ($params[0])
-                    {
-                        case "menu-item-add":
-                            if ($_REQUEST["new_title"] && $_REQUEST["new_url"])
-                            {
-                                Application::$Database->MenuItems->insert(new MenuItem(null, $_REQUEST["new_title"], $_REQUEST["new_url"]));
-                                $this->Messages[] = new Message("Added menu item.", "Item '".$_REQUEST["new_title"]."' successfully added.");
-                            }
-                        break;
-                    }
-                } 
-            }
+                $this->menuItemsEvents($key);
+            if (stristr($key, "set-parametrs"))
+                $this->setParametrs();
+
         }
     }
 
@@ -149,5 +108,66 @@ class AdminController extends Controller
         else
             $this->view("Page404");
     }
+
+
+
+    private function setParametrs()
+    {
+        $this->Messages[] = new Message("The parameters are set.", "The entered parameters are saved successfully.", "green");
+        foreach (Application::$Configuration->Settings as $setting)
+        {
+            echo "$setting <br/>";
+                Application::$Configuration->setValue($setting,$_REQUEST[$setting]);
+        }
+       // Application::$Configuration->update();
+    }
+
+    private function menuItemsEvents($key)
+    {
+        $params = explode("_", $key);
+        if (count($params) == 2)
+        { 
+            $name = $params[0];
+            $id = $params[1];
+            switch ($name)
+            {
+                case "menu-item-inc":
+                    $this->menuItemPreoritetyInc($id);
+                break;
+                case "menu-item-dec":
+                    $this->menuItemPreoritetyDec($id);
+                break;
+                case "menu-item-change":
+                    $this->ChangeMenuItemId = $id;
+                break;
+                case "menu-item-save":
+                    $this->menuItemSave($id);
+                break;
+                case "menu-item-del":
+                    $MenuItem = Application::$Database->MenuItems->getMenuItemById($id);
+                    if ($MenuItem)
+                    {
+                        $getTitle = $MenuItem->getValue()->Title;
+                        $MenuItem->remove();
+                        $this->Messages[] = new Message("Deleted menu item.", "Item '$getTitle' successfully deleted.", "red");
+                    }
+                break;
+            }
+            if (count($params) == 1)
+            {
+                switch ($params[0])
+                {
+                    case "menu-item-add":
+                        if ($_REQUEST["new_title"] && $_REQUEST["new_url"])
+                        {
+                            Application::$Database->MenuItems->insert(new MenuItem(null, $_REQUEST["new_title"], $_REQUEST["new_url"]));
+                            $this->Messages[] = new Message("Added menu item.", "Item '".$_REQUEST["new_title"]."' successfully added.");
+                        }
+                    break;
+                }
+            } 
+        }
+    }
+
 
 }

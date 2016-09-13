@@ -11,6 +11,8 @@ a:hover { text-decoration: underline; color: #A52A2A; }
 
 form { margin-bottom: 0em; }
 
+.form-mini { width: 450px; }
+
 input[type="text"] { font-size: 14pt; color: #A52A2A; background: none; border: solid 2px #A52A2A; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; } 
 input[type="password"] { font-size: 14pt; color: #A52A2A; background: none; border: solid 2px #A52A2A; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; } 
 
@@ -40,7 +42,12 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 */
 .col-big { width: calc(100% - 300px) ; height: auto; box-sizing: border-box; padding: 15px; left: 300px; float: right;  }
 .col-big h1 { color: #A52A2A; }
+.col-big h2 { color: #A52A2A; width: 100%; border-bottom: solid 2px #A52A2A; }
+
+.inputbox { padding: 7px 0; }
+.inputbox input { float: right; }
 .container { padding: 10px 0; }
+
 
 .menuitem { width: 100%; height: auto; padding: 15px; box-sizing: border-box; border-bottom: solid 1px rgb(180, 185, 190 ); }
 .menuitem-col { width: calc(50% - 90px); height: auto; box-sizing: border-box; padding: 0; float: left; font-size: 14pt; }
