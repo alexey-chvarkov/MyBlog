@@ -2,7 +2,8 @@ body { padding: 0; margin: 0; font-family: ''Times New Roman', Times, serif'; fo
 background-image: -webkit-gradient(linear, left top, left bottom, from(#bdbdbd), to(#ededed)); 
 background-image: -webkit-linear-gradient(top, #bdbdbd, #ededed); background-image: 
 -moz-linear-gradient(top, #bdbdbd, #ededed); background-image: 
-linear-gradient(to bottom, #bdbdbd, #ededed);   }
+linear-gradient(to bottom, #bdbdbd, #ededed); 
+min-width: 1100px; }
 
 h1 { font-size: 16pt; color: #ededed; -webkit-margin-after: 0; -webkit-margin-before: 0; }
 h2 { font-size: 14pt; color: #A52A2A; -webkit-margin-after: 0.1em; -webkit-margin-before: 0.1em; }
@@ -40,9 +41,11 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 .col-small ul li:hover span { background: #ededed; color: rgb(60, 65, 75); }
 .col-small ul li:hover a { color: #ededed; }
 */
-.col-big { width: calc(100% - 300px) ; height: auto; box-sizing: border-box; padding: 15px; left: 300px; float: right;  }
+.col-big { width: calc(100% - 300px) ; min-width: 700px; height: auto; box-sizing: border-box; padding: 15px; left: 300px; float: right;  }
 .col-big h1 { color: #A52A2A; }
 .col-big h2 { color: #A52A2A; width: 100%; border-bottom: solid 2px #A52A2A; }
+
+.col-sub-small { width: 250px; height: 100%; border-right: solid 1px #ededed; float: left; position: absolute; position: relative; } 
 
 .inputbox { padding: 7px 0; }
 .inputbox input { float: right; }
@@ -52,5 +55,9 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 .menuitem { width: 100%; height: auto; padding: 15px; box-sizing: border-box; border-bottom: solid 1px rgb(180, 185, 190 ); }
 .menuitem-col { width: calc(50% - 90px); height: auto; box-sizing: border-box; padding: 0; float: left; font-size: 14pt; }
 .menuitem-nav { width: 180px; height: auto; box-sizing: border-box; padding: 0; float: left; }
+
+.sideitem { width: 100%; height: auto; padding: 15px; box-sizing: border-box; border-bottom: solid 1px rgb(180, 185, 190 ); }
+.sideitem-col { width: calc(100% - 180px); height: auto; box-sizing: border-box; padding: 0; float: left; font-size: 14pt; }
+.sideitem-nav { width: 180px; height: auto; box-sizing: border-box; padding: 0; float: left; }
 
 .footer { font-size: 11pt; color: rgb(60, 65, 70 ); width: 100%; height: auto; background: none; border-top: solid 1px rgb(60, 65, 70 ); padding: 10px; box-sizing: border-box; }
