@@ -57,6 +57,7 @@ class SideItemRow extends SideItem
 				`Content` = '$this->Content' and
 				`Preoritety` = $this->Preoritety
 				");
+			Application::$Database->SideItems->__update();
 		}
 		catch (Exception $e)
 		{

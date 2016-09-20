@@ -34,6 +34,11 @@ abstract class Controller
         $this->metaAuthor = $author;
     }
 
+    protected function setLocation($url)
+    {
+        header("Location: $url");
+    }
+
     protected function header()
     {
         include '../App/Views/Header.php';

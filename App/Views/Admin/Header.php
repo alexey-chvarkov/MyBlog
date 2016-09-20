@@ -9,6 +9,7 @@
         <meta name="author" content="">
         <link rel="stylesheet" href="assets/css/admin.css" />
         <link rel="stylesheet" href="assets/css/sys.css" />
+        <script src="assets/js/adm.js"></script>
     </head>
     <body>
         <div class="header">
@@ -20,21 +21,23 @@
             <div>
             <h2>Management</h2>
                 <ul>
-                    <li>
+                <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">
+                    <li <?php if ($_GET['open'] == "menu_manager") echo "class='col-small-select-item'"; ?>>
                         <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">Menu</a>
                         <span><?php echo Application::$Database->MenuItems->count(); ?></span>
                     </li>
-                    <li>
+                </a>
+                    <li <?php if ($_GET['open'] == "side_manager") echo "class='col-small-select-item'"; ?>>
                         <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Side</a>
-                        <span>2</span>
+                        <span><?php echo Application::$Database->SideItems->count(); ?></span>
                     </li>
-                    <li>
+                    <li <?php if ($_GET['open'] == "page_manager") echo "class='col-small-select-item'"; ?>>
                         <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=page_manager">Pages</a>
                         <span>0</span>
                     </li>
                     <li>
                         <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=post_manager">Posts</a>
-                        <span>4</span>
+                        <span><?php echo Application::$Database->Posts->count(); ?></span>
                     </li>
                 </ul>
             </div>
