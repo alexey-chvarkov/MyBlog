@@ -21,23 +21,26 @@
             <div>
             <h2>Management</h2>
                 <ul>
-                <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">
                     <li <?php if ($_GET['open'] == "menu_manager") echo "class='col-small-select-item'"; ?>>
-                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">Menu</a>
-                        <span><?php echo Application::$Database->MenuItems->count(); ?></span>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager">Menu
+                            <span><?php echo Application::$Database->MenuItems->count(); ?></span>
+                        </a>     
                     </li>
                 </a>
                     <li <?php if ($_GET['open'] == "side_manager") echo "class='col-small-select-item'"; ?>>
-                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Side</a>
-                        <span><?php echo Application::$Database->SideItems->count(); ?></span>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Side
+                            <span><?php echo Application::$Database->SideItems->count(); ?></span>
+                        </a>
                     </li>
                     <li <?php if ($_GET['open'] == "page_manager") echo "class='col-small-select-item'"; ?>>
-                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=page_manager">Pages</a>
-                        <span>0</span>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=page_manager">Pages
+                            <span>110</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=post_manager">Posts</a>
-                        <span><?php echo Application::$Database->Posts->count(); ?></span>
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=post_manager">Posts
+                            <span><?php echo Application::$Database->Posts->count(); ?></span>
+                        </a>
                     </li>
                 </ul>
             </div>

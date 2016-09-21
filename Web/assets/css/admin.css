@@ -34,7 +34,7 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 /* Button styles */
 
 
-.btn-gray { padding: 5px 10px; margin: 5px; font-size: 14pt; color: #555; border: solid 1px #cdcdcd; background: none; border-radius: 3px; background-image: linear-gradient(rgb(240, 240, 240), rgb(180, 180, 180)); }
+.btn-gray { padding: 5px 10px; margin: 5px; font-size: 14pt; color: #555; border: solid 1px #cdcdcd; background: none; border-radius: 3px; background-image: linear-gradient(rgb(245, 245, 245), rgb(215, 215, 215)); }
 
 .btn-green { padding: 5px 10px; margin: 5px; font-size: 14pt; color: #fff; border: solid 1px rgb(0, 150, 0); background: none; border-radius: 3px; background-image: linear-gradient(rgb(0, 180, 0), rgb(0, 120, 0)); }
 
@@ -56,7 +56,7 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 
 /* input */
 
-.tbx { font-size: 13pt; padding: 5px 8px; border: solid 1px #adadad; color: #333; background-image: linear-gradient(rgb(245, 245, 245), rgb(235, 235, 235)); border-radius: 3px; }
+.tbx { font-size: 13pt; padding: 5px 8px; border: solid 1px #adadad; color: #333; background-image: linear-gradient(rgb(248, 248, 248), rgb(241, 241, 241)); border-radius: 3px; }
 
 
 
@@ -66,7 +66,7 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 .header a:hover { text-decoration: underline; }
 
 
-.col-small-select-item { box-shadow: 1px 2px 16px #999; background: #fff; top:-3px;  }
+.col-small-select-item a { background-image: linear-gradient(to right, rgb(230, 230, 230), rgb(250, 250, 250)); }
 
 .bot-shadow { box-shadow: 0px 8px 10px -9px #000000; }
 .box-scrolling { height: calc(100% - 230px); max-height: calc(100% - 210px); overflow: auto; }
@@ -74,14 +74,18 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 
 .col-small { width: 300px; height: calc(100% - 90px); box-sizing: border-box; padding: 0; float: left;  }
 
-.col-small div { padding: 10px 0; }
-.col-small h2 { margin: 0 10px; }
-.col-small ul { -webkit-padding-start: 0; margin: 0; }
-.col-small ul li { display: block; list-style: none; margin: 0; padding: 8px 10px; border-bottom: solid 1px rgb(240, 240, 240 );  }
-.col-small ul li span { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 4px; background: #A52A2A; color: #fff; margin-left: 14px; margin-top: -4px;}
 .col-big { width: calc(100% - 300px) ; height: calc(100% - 80px); max-height: calc(100% - 80px); height: auto; box-sizing: border-box; padding: 15px; left: 300px; float: right;  }
 .col-big h1 { color: #A52A2A; }
 .col-big h2 { color: #A52A2A; width: 100%; border-bottom: solid 2px #A52A2A; }
+
+.col-small div h2 { padding: 10; }
+
+.col-small ul { -webkit-margin-before: 0; -webkit-margin-after: 0; -webkit-margin-start: 0; -webkit-margin-end: 0; -webkit-padding-start: 0; }
+
+.col-small ul li { display: block;  }
+
+.col-small ul li a { display: block;  width: 100%; height: auto; padding: 10px; box-sizing: border-box; }
+.col-small ul li a span { display: block; margin-top: -3px; padding: 3px 8px; color: #fff; float: right; background: #A52A2A; border-radius: 50px;}
 
 .col-sub-small { width: 250px; height: 100%; border-right: solid 1px #ededed; float: left; position: absolute; position: relative; } 
 
@@ -89,7 +93,7 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 .inputbox input { float: right; }
 .container { padding: 10px 0; }
 
-.icontainer { padding: 7px 0; width: 500px; }
+.icontainer { padding: 10px 0; width: 500px; }
 .icontainer input { float: right; }
 
 

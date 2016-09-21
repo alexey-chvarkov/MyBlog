@@ -164,15 +164,15 @@ class AdminController extends Controller
 
             switch($_GET["open"])
             {
-                case null: $this->view("Admin/MainView");  break;
-                case "menu_manager": $this->view("Admin/MenuManagerView");  break;
-                case "menu_manager_add": $this->view("Admin/MenuManagerAddView");  break;
-                case "side_manager": $this->view("Admin/SideManagerView");  break;
-                case "side_manager_add": $this->view("Admin/SideManagerAddView");  break;
-                case "page_manager": $this->view("Admin/PageManagerView");  break;
-                case "post_manager": $this->view("Admin/PostManagerView");  break;
-                case "parametrs_settings": $this->view("Admin/ParametrsSettingsView");  break;
-                case "design_settings": $this->view("Admin/DesignSettingsView");  break;
+                case null: $this->view("Admin/MainView"); break; break;
+                case "menu_manager": $this->view("Admin/MenuManagerView");  break; break;
+                case "menu_manager_add": $this->view("Admin/MenuManagerAddView");  break; break;
+                case "side_manager": $this->view("Admin/SideManagerView");  break; break;
+                case "side_manager_add": $this->view("Admin/SideManagerAddView"); break; break;
+                case "page_manager": $this->view("Admin/PageManagerView"); break; break;
+                case "post_manager": $this->view("Admin/PostManagerView"); break; break;
+                case "parametrs_settings": $this->view("Admin/ParametrsSettingsView"); break; break;
+                case "design_settings": $this->view("Admin/DesignSettingsView"); break; break;
             }
             $this->view("Admin/Footer");
             foreach ($this->Messages as $Message)

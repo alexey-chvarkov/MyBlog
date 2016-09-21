@@ -18,22 +18,37 @@ function mm_setValueCheckBox(id, value) {
     return document.getElementById("menuitem-check"+id).checked = value;
 }
 
+function mm_has_sellect() {
+    for (var i = 1; i <= mm_count(); i++) 
+        if (document.getElementById("menuitem-check"+i).checked)
+            return true;
+    return false;
+}
+
+function mm_active_panel() {
+    document.getElementById("select-delete").setAttribute("class", "btn-red");
+    document.getElementById("select-delete").setAttribute("type", "submit");
+}
+
+function mm_disactive_panel() {
+    document.getElementById("select-delete").setAttribute("class", "btn-gray");
+    document.getElementById("select-delete").setAttribute("type", "button");
+}
 
 
 //Events
 
-function mm_all_click()
+function mm_all_check_click()
 {
     for (var i = 1; i <= mm_count(); i++)
-        mm_setValueCheckBox(i, true);
+        mm_setValueCheckBox(i, document.getElementById("all-check").checked);
+    mm_menuitem_check_onchange();
 }
 
-function mm_inversed_click() {
-    for (var i = 1; i <= mm_count(); i++)
-        mm_setValueCheckBox(i, !mm_getValueCheckBox(i));
-}
-
-function mm_clear_click() {
-    for (var i = 1; i <= mm_count(); i++)
-        mm_setValueCheckBox(i, false);
+function mm_menuitem_check_onchange()
+{
+    if (mm_has_sellect())
+        mm_active_panel();
+    else
+        mm_disactive_panel()
 }
