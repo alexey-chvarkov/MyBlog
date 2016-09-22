@@ -26,13 +26,13 @@ function mm_has_sellect() {
 }
 
 function mm_active_panel() {
-    document.getElementById("select-delete").setAttribute("class", "btn-red");
-    document.getElementById("select-delete").setAttribute("type", "submit");
+    document.getElementById("delete-selected").setAttribute("class", "btn-red");
+    document.getElementById("delete-selected").setAttribute("type", "submit");
 }
 
 function mm_disactive_panel() {
-    document.getElementById("select-delete").setAttribute("class", "btn-gray");
-    document.getElementById("select-delete").setAttribute("type", "button");
+    document.getElementById("delete-selected").setAttribute("class", "btn-gray");
+    document.getElementById("delete-selected").setAttribute("type", "button");
 }
 
 

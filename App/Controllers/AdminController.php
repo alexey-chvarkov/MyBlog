@@ -44,6 +44,7 @@ class AdminController extends Controller
                 $thisPreoritety = Application::$Database->MenuItems[$i]->getValue()->Preoritety;
                 Application::$Database->MenuItems[$i - 1]->Preoritety = $thisPreoritety;
                 Application::$Database->MenuItems[$i]->Preoritety = $nextPreoritety;
+                Application::$Database->MenuItems->__recountingPreoritety();
                 Application::$Database->MenuItems->__update();
                 break;
             }
@@ -61,10 +62,28 @@ class AdminController extends Controller
                 $thisPreoritety = Application::$Database->MenuItems[$i]->getValue()->Preoritety;
                 Application::$Database->MenuItems[$i + 1]->Preoritety = $thisPreoritety;
                 Application::$Database->MenuItems[$i]->Preoritety = $prevPreoritety;
+                Application::$Database->MenuItems->__recountingPreoritety();
                 Application::$Database->MenuItems->__update();
                 break;
             }
         }
+    }
+
+    private function menuDeleteSelectedItems()
+    {
+        $deleted = 0;
+        foreach ($_REQUEST as $key => $value)
+        {
+            $params = explode("_", $key);
+            if ($params[0] == "menu-item-select" && $params[1] && $value == "on") 
+            {
+                $this->menuItemDelete($params[1], false);
+                $deleted++;
+            }
+        }
+        if ($deleted > 0)
+            $this->Messages[] = new Message("Deleted menu item.", "Selected $deleted menu items successfully deleted.", "red");
+                
     }
 
     private function sideItemPreoritetyInc($id)
@@ -123,14 +142,15 @@ class AdminController extends Controller
         }
     }
 
-    public function menuItemDelete($id)
+    public function menuItemDelete($id, $showMessage=true)
     {
         $MenuItem = Application::$Database->MenuItems->getMenuItemById($id);
         if ($MenuItem)
         {
             $getTitle = $MenuItem->getValue()->Title;
             $MenuItem->remove();
-            $this->Messages[] = new Message("Deleted menu item.", "Item '$getTitle' successfully deleted.", "red");
+            if ($showMessage)
+                $this->Messages[] = new Message("Deleted menu item.", "Item '$getTitle' successfully deleted.", "red");
         }
     }
 
@@ -216,6 +236,7 @@ class AdminController extends Controller
             switch ($params[0])
             {
                 case "menu-item-add": $this->menuItemAdd(); break;
+                case "delete-selected": $this->menuDeleteSelectedItems(); break;
             }
         } 
     }

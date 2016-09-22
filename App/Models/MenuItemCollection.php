@@ -25,6 +25,11 @@ class MenuItemCollection extends Collection
 		parent::clear();
         foreach ($result as $value)
 			parent::add(new MenuItemRow(new MenuItem($value["MenuItemId"], $value["Title"], $value["URL"], $value["Preoritety"])));
+    }
+ 
+    public function __recountingPreoritety()
+    {
+        $this->__update();
         $preor = $this->count();
         foreach ($this as $value)
         {
@@ -32,7 +37,7 @@ class MenuItemCollection extends Collection
             $preor--;
         }
     }
- 
+
     public function insert($MenuItem)
     {
         $result = Application::$Database->query("INSERT INTO `MenuItems`(`Title`, `URL`, `Preoritety`) 

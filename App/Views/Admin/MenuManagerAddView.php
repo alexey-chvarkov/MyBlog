@@ -10,7 +10,7 @@
     </div>
     <div class="icontainer">
         <input class="btn-green" name="menu-item-add" type="submit" value="Add item" />
-        <input class="btn-gray" name="back" type="submit" value="Back" />
+        <input onclick="history.back();" class="btn-gray" name="back" type="button" value="Back" />
     </div>
     <div style="clear: both"></div>
 </form>
