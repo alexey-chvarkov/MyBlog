@@ -10,7 +10,7 @@ class SideItemRow extends SideItem
 	{
 		try
 		{
-			$result = Application::$Database->query("UPDATE `SideItems` SET `$name` = '$value' WHERE `SideItemId` = ".$this->PostId);
+			$result = Application::$Database->query("UPDATE `SideItems` SET `$name` = '$value' WHERE `SideItemId` = ".$this->SideItemId);
 			if ($result)
 			{
 				switch($name)

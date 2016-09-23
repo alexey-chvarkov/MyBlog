@@ -15,19 +15,10 @@ class MenuItemRow extends MenuItem
 			{
 				switch($name)
 				{
-					case "MenuItemId": 
-						$this->MenuItemId = $value; 
-					break;
-					case "Title": 
-						$this->Title = $value;  
-					break;
-					case "URL": 
-						$this->URL = $value;  
-					break;
-					case "Preoritety": 
-						$this->Preoritety = $value;  
-						
-					break;
+					case "MenuItemId": $this->MenuItemId = $value; break;
+					case "Title": $this->Title = $value; break;
+					case "URL": $this->URL = $value; break;
+					case "Preoritety": $this->Preoritety = $value; break;
 					default: return; break;
 				}
 			}

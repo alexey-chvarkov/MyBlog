@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Add new widget</h1>
+    <h1>Change widget</h1>
 </div>
 <form name="add_menu_item" method="post">
     <div class="icontainer">
@@ -25,7 +25,7 @@
         <textarea id="content" class="tbx" name="new_content" cols="47" rows="12"></textarea>
     </div>
     <div class="icontainer">
-        <input name="side-item-add" class="btn-green" type="submit" value="Add" />
+        <input name="side-item-add" class="btn-green" type="submit" value="Save" />
         <input onclick="history.back();" class="btn-gray" type="submit" value="Back" />
     </div>
 </form>

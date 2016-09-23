@@ -40,6 +40,7 @@ class MenuItemCollection extends Collection
 
     public function insert($MenuItem)
     {
+        die($MenuItem->toString());
         $result = Application::$Database->query("INSERT INTO `MenuItems`(`Title`, `URL`, `Preoritety`) 
             VALUES ('$MenuItem->Title', '$MenuItem->URL', '$MenuItem->Preoritety')");
         if (!$result) 

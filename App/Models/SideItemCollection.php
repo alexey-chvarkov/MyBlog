@@ -26,6 +26,17 @@ class SideItemCollection extends Collection
         foreach ($result as $value)
 			parent::add(new SideItemRow(new SideItem($value["SideItemId"], $value["Title"], $value["Content"], $value["Preoritety"])));
     }
+ 
+    public function __recountingPreoritety()
+    {
+        $this->__update();
+        $preor = $this->count();
+        foreach ($this as $value)
+        {
+            $value->Preoritety = $preor;
+            $preor--;
+        }
+    }
 
     public function insert($SideItem)
     {

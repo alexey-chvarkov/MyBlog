@@ -6,7 +6,7 @@
         <input id="all-check" onclick="mm_all_check_click();" style="margin-left: 13px;" type="checkbox" />
         <input onclick="history.back();" class="btn-gray" name="back" type="button" value="◄ Back" />
         <input class="btn-green" onclick="location = '?p=<?php echo Application::$Configuration->AdminPage; ?>&open=menu_manager_add'" name="nav_add" type="button" value="✚ Add" />
-        <input id="delete-selected" class="btn-gray" style="float: right" onclick="" name="delete-selected" type="button" value="✖ Delete" />
+        <input id="delete-selected" class="btn-gray" style="float: right" onclick="" name="menu-delete-selected" type="button" value="✖ Delete" />
     </div>
 
     <div class="container box-scrolling">
