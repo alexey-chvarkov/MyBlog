@@ -1,9 +1,11 @@
+<?php use App\Application as Application; ?>
+
 <div class="container">
     <h1>Change widget</h1>
 </div>
 <form name="add_menu_item" method="post">
     <div class="icontainer">
-        <span>Title: </span><input class="tbx" type="text"  name="new_title" />
+        <span>Title: </span><input class="tbx" type="text"  name="title" value="<?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Title; ?>" />
     </div>
 
     <div class="container" style="float: left;">     
@@ -22,11 +24,13 @@
     </div>
 
     <div class="icontainer">
-        <textarea id="content" class="tbx" name="new_content" cols="47" rows="12"></textarea>
+        <textarea id="content" class="tbx" name="content" cols="47" rows="12">
+            <?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Content; ?>
+        </textarea>
     </div>
     <div class="icontainer">
-        <input name="side-item-add" class="btn-green" type="submit" value="Save" />
-        <input onclick="history.back();" class="btn-gray" type="submit" value="Back" />
+        <input name="side-item-save" class="btn-green" type="submit" value="✎ Save" />
+        <input onclick="history.back();" class="btn-gray" type="submit" value="◄ Back" />
     </div>
 </form>
 <div style="clear: both"></div>

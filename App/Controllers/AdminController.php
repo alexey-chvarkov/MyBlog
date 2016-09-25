@@ -161,6 +161,18 @@ class AdminController extends Controller
         $this->setLocation("?p=$this->AdminPageName&open=side_manager_change&id=$id");
     }
 
+    private function sideItemSave($id)
+    {
+        if ($_REQUEST["title"] &&  $_REQUEST["content"] && $id && Application::$Database->SideItems->getSideItemById($id))
+        {
+            Application::$Database->SideItems->getSideItemById($id)->Title = $_REQUEST["title"];
+            Application::$Database->SideItems->getSideItemById($id)->Content = $_REQUEST["content"];
+            Application::$Database->SideItems->__update();
+            //die(Application::$Database->SideItems->getSideItemById($id)->toString());
+            $this->Messages[] = new Message("Changed side item.", "Item '".$_REQUEST["title"]."' successfully changed.");
+            $this->setLocation("?p=$this->AdminPageName&open=side_manager");
+        }
+    }
 
     private function sideItemPreoritetyInc($id)
     {
@@ -234,7 +246,13 @@ class AdminController extends Controller
                 case "menu_manager_add": $this->view("Admin/MenuManagerAddView");  break; break;
                 case "side_manager": $this->view("Admin/SideManagerView");  break; break;
                 case "side_manager_add": $this->view("Admin/SideManagerAddView"); break; break;
-                case "side_manager_change": $this->view("Admin/SideManagerChangeView"); break; break;
+                case "side_manager_change": 
+                    $this->ChangeSideItemId = $_REQUEST["id"]; 
+                    if (Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId))
+                        $this->view("Admin/SideManagerChangeView"); 
+                    break; 
+                
+                break;
                 case "page_manager": $this->view("Admin/PageManagerView"); break; break;
                 case "post_manager": $this->view("Admin/PostManagerView"); break; break;
                 case "parametrs_settings": $this->view("Admin/ParametrsSettingsView"); break; break;
@@ -290,7 +308,7 @@ class AdminController extends Controller
                 case "side-item-add": $this->sideItemAdd(); break;
                 case "menu-delete-selected": $this->menuDeleteSelectedItems(); break;
                 case "side-delete-selected": $this->sideDeleteSelectedItems(); break;
-                
+                case "side-item-save": $this->sideItemSave($_REQUEST["id"]); break; break;
             }
         } 
     }
