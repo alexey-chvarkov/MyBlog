@@ -19,7 +19,7 @@
                     <?php else: ?>
                         <span><?php echo $SideItem->getValue()->Title; ?></span>
                     <?php endif; ?>
-                    <div style="clear: both"></div>
+
                 </div>
                 <div class="sideitem-nav">
                     <?php if ($this->ChangeSideItemId == $SideItem->getValue()->SideItemId): ?>

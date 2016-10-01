@@ -168,7 +168,6 @@ class AdminController extends Controller
             Application::$Database->SideItems->getSideItemById($id)->Title = $_REQUEST["title"];
             Application::$Database->SideItems->getSideItemById($id)->Content = $_REQUEST["content"];
             Application::$Database->SideItems->__update();
-            //die(Application::$Database->SideItems->getSideItemById($id)->toString());
             $this->Messages[] = new Message("Changed side item.", "Item '".$_REQUEST["title"]."' successfully changed.");
             $this->setLocation("?p=$this->AdminPageName&open=side_manager");
         }

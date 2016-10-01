@@ -5,10 +5,10 @@ namespace App\Controllers;
 use App\Application as Application;
 use App\Core\Controller as Controller;
 
-class PostController extends Controller
+class PageController extends Controller
 {
 
-    public $Post;
+    public $Page;
 
     public function __construct()
     {
@@ -18,17 +18,16 @@ class PostController extends Controller
 
     public function main()
     {        
-        $this->Post = Application::$Database->Posts->getPostById($_GET["id"]);
-        if ($this->Post) {
+        $this->Page = Application::$Database->Pages->getPageByAlias($_GET["p"]);
+        if ($this->Page) {
             $this->header();
-            $this->view("PostView");
+            $this->view("PageView");
             $this->footer();
-            $this->Post->Views = $this->Post->getValue()->Views + 1;
+            $this->Page->Views = $this->Page->getValue()->Views + 1;
+            
         }
         else {
             $this->view("Page404");
         }
     }
-
-
 }

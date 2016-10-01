@@ -5,14 +5,17 @@ namespace App;
 use App\Core\Configuration as Configuration;
 use App\Core\Database as Database;
 
+use App\Models\Page as Page;
+
 use App\Models\PostCollection as PostCollection;
+use App\Models\PageCollection as PageCollection;
 use App\Models\MenuItemCollection as MenuItemCollection;
 use App\Models\SideItemCollection as SideItemCollection;
 
 use App\Controllers\AdminController as AdminController;
 use App\Controllers\MainController as MainController;
 use App\Controllers\PostController as PostController;
-
+use App\Controllers\PageController as PageController;
 
 use App\Models\SideItem as SideItem;
 
@@ -26,6 +29,7 @@ class Application
         Application::$Configuration = new Configuration();
         Application::$Database = new Database();
         Application::$Database->Posts = new PostCollection();
+        Application::$Database->Pages = new PageCollection();
         Application::$Database->MenuItems = new MenuItemCollection();
         Application::$Database->SideItems = new SideItemCollection();
     }
@@ -55,7 +59,9 @@ class Application
                 case "post":
                     new PostController();
                 break;
-                default: exit; break;
+                default:          
+                    new PageController();
+                break;
             }
         }
     }

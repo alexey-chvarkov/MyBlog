@@ -11,6 +11,7 @@ class Database
 	private $Connection;
 
     public $Posts;
+	public $Pages;
 	public $MenuItems;
 	public $SideItems;
 
