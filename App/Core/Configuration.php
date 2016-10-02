@@ -16,12 +16,12 @@ class Configuration
     public $AdminPage;
     public $Copyright;
 
-    public $templateName;
+    public $TemplateName;
 
     private $__config;
 
     public $Settings = array("db_server", "db_user", "db_password", "db_name", "sitename", 
-        "background", "adminpage", "copyright");
+        "background", "adminpage", "copyright", "template");
 
     public function __construct()
     {
@@ -49,6 +49,7 @@ class Configuration
         $this->Background = $this->__config->site->background;
         $this->AdminPage = $this->__config->site->adminpage;
         $this->Copyright = $this->__config->site->copyright;
+        $this->Template = $this->__config->site->template;
     }
 
     public function setValue($name, $value)
@@ -63,6 +64,7 @@ class Configuration
             case "background": $this->__config->site->background = $value; break;
             case "adminpage": $this->__config->site->adminpage = $value; break;
             case "copyright": $this->__config->site->copyright = $value; break;
+            case "template": $this->__config->site->template = $value; break;
         }
         $this->__config->saveXML();
     }

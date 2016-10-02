@@ -3,41 +3,24 @@
 <h1>Parametrs settings</h1>
 
 <form class="form-mini" method="post">
-        <h2>Database</h2>
-        <div class="inputbox">
-            <span>MySQL server: </span>
-            <input type="text" name="db_server" value="<?php echo Application::$Configuration->DBServer; ?>" />
-        </div>
-        <div class="inputbox">
-            <span>Username: </span>
-            <input type="text" name="db_user" value="<?php echo Application::$Configuration->DBUser; ?>" />
-        </div>
-        <div class="inputbox">
-            <span>Password: </span>
-            <input type="password" name="db_password" value="<?php echo Application::$Configuration->DBPassword; ?>" />
-        </div>
-        <div class="inputbox">
-            <span>Database name: </span>
-            <input type="text" name="db_name" value="<?php echo Application::$Configuration->DBName; ?>" />
-        </div>
-        <h2>Site</h2>
-        <div class="inputbox">
+        <h2>Global</h2>
+        <div class="inputbox icontainer">
             <span>Site name: </span>
-            <input type="text" name="sitename" value="<?php echo Application::$Configuration->SiteName; ?>" />
+            <input class="tbx" type="text" name="sitename" value="<?php echo Application::$Configuration->SiteName; ?>" />
         </div>
-        <div class="inputbox">
+        <div class="inputbox icontainer">
             <span>Background: </span>
-            <input type="text" name="background" value="<?php echo Application::$Configuration->Background; ?>" />
+            <input class="tbx" type="text" name="background" value="<?php echo Application::$Configuration->Background; ?>" />
         </div>
-        <div class="inputbox">
+        <div class="inputbox icontainer">
             <span>Admin page: </span>
-            <input type="text" name="adminpage" value="<?php echo Application::$Configuration->AdminPage; ?>" />
+            <input class="tbx" type="text" name="adminpage" value="<?php echo Application::$Configuration->AdminPage; ?>" />
         </div>
-        <div class="inputbox">
+        <div class="inputbox icontainer">
             <span>Copyright: </span>
-            <input type="text" name="copyright" value="<?php echo Application::$Configuration->Copyright; ?>" />
+            <input class="tbx" type="text" name="copyright" value="<?php echo Application::$Configuration->Copyright; ?>" />
         </div>
-        <div class="inputbox">
-            <input name="set-parametrs" type="submit" value="Set parametrs" />
+        <div class="inputbox icontainer">
+            <input class="btn-green" name="set-parametrs" type="submit" value="Set parametrs" />
         </div>
 </form>

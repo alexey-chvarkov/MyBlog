@@ -24,13 +24,13 @@ class PostCollection extends Collection
         $result = Application::$Database->query("SELECT * FROM `Posts` $where");
 		parent::clear();
         foreach ($result as $value)
-			parent::add(new PostRow(new Post($value["PostId"], $value["Title"], $value["Preview"], $value["Content"], $value["DateCreated"], $value["Views"])));
+			parent::add(new PostRow(new Post($value["PostId"], $value["Title"], $value["Preview"], $value["Content"], $value["Image"], $value["DateCreated"], $value["Views"])));
     }
 
     public function insert($Post)
     {
-        $result = Application::$Database->query("INSERT INTO `Posts`(`Title`, `Preview`, `Content`) 
-            VALUES ('$Post->Title', '$Post->Preview', '$Post->Content')");
+        $result = Application::$Database->query("INSERT INTO `Posts`(`Title`, `Preview`, `Content` , `Image`) 
+            VALUES ('$Post->Title', '$Post->Preview', '$Post->Content', '$Post->Image')");
         if (!$result) 
             (new Error())->show();
         $this->__update();

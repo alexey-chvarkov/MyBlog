@@ -47,7 +47,7 @@ class Page extends Object
 	{
 		return "{
 			\"Type\": \"$this->Type\",
-			\"PostId\": $this->PageId,
+			\"PageId\": $this->PageId,
 			\"Title\": \"$this->Title\",
 			\"Preview\": \"$this->Alias\",
 			\"Content\": \"$this->Content\",

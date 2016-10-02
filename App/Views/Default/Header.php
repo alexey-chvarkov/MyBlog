@@ -1,4 +1,4 @@
-﻿<?php use App\Application as Application; ?>
+<?php use App\Application as Application; ?>
 <!DOCTYPE XHTML>
 <html>
     <head>
@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="">
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/<?php echo $this->TemplateName; ?>/css/main.css" />
         <link rel="stylesheet" href="assets/css/sys.css" />
         <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     </head>

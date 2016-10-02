@@ -21,6 +21,7 @@ class PostRow extends Post
 					case "Content": $this->Content = $value;  break;
 					case "DateCreated": $this->DateCreated = $value;  break;
 					case "Views": $this->Views = $value;  break;
+					case "Image": $this->Image = $value;  break;
 					default: return; break;
 				}
 			}
@@ -41,7 +42,8 @@ class PostRow extends Post
 				`Preview` = '$this->Preview' and
 				`Content` = '$this->Content' and
 				`DateCreated` = '$this->DateCreated' and
-				`Views` = $this->Views 
+				`Views` = $this->Views and
+				`Image` = '$this->Image'
 				");
 			return $get[0][$name];
 		}
@@ -61,7 +63,8 @@ class PostRow extends Post
 				`Preview` = '$this->Preview' and
 				`Content` = '$this->Content' and
 				`DateCreated` = '$this->DateCreated' and
-				`Views` = $this->Views
+				`Views` = $this->Views and
+				`Image` = '$this->Image'
 				");
 		}
 		catch (Exception $e)
@@ -72,13 +75,13 @@ class PostRow extends Post
 
 	public function __construct($Post)
 	{
-		parent::__construct($Post->PostId, $Post->Title, $Post->Preview, $Post->Content, $Post->DateCreated, $Post->Views);
+		parent::__construct($Post->PostId, $Post->Title, $Post->Preview, $Post->Content, $Post->Image, $Post->DateCreated, $Post->Views);
 		$this->setType("PostRow");
 	}
 
 	public function getValue()
 	{
-		return new Post($this->PostId, $this->Title, $this->Preview, $this->Content, $this->DateCreated, $this->Views);
+		return new Post($this->PostId, $this->Title, $this->Preview, $this->Content, $this->Image, $this->DateCreated, $this->Views);
 	}
 
 
@@ -91,14 +94,15 @@ class PostRow extends Post
 			\"Preview\": \"$this->Preview\",
 			\"Content\": \"$this->Content\",
 			\"DateCreated\": \"$this->DateCreated\",
-			\"Views\": $this->Views
+			\"Views\": $this->Views,
+			\"Image\": \"$this->Image\",
 		}";
 	}
 
 	public function isEmpty()
 	{
 		return (!$this->PostId && !$this->Title && !$this->Preview 
-			&& !$this->Content && !$this->DateCreated);
+			&& !$this->Content && !$this->DateCreated && !$this->Image);
 	}
 
 	public function equal($object)

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Application as Application;
 use App\Core\Message as Message;
 use App\Core\Controller as Controller;
+use App\Core\Template as Template;
 
 use App\Models\MenuItem as MenuItem;
 use App\Models\MenuItemCollection as MenuItemCollection;
@@ -21,6 +22,7 @@ class AdminController extends Controller
 
     public $ChangeMenuItemId = null;
     public $ChangeSideItemId = null;
+    public $ChangePageId = null;
     public $IsOpenAddMenuItem = false;
 
     private $_OpenList = array(null,
@@ -223,6 +225,31 @@ class AdminController extends Controller
 
 
 
+    //Templates
+
+    public function getTemplates()
+    {
+        $tmplist = glob("../App/Views/*", GLOB_ONLYDIR);
+        foreach ($tmplist as $tmp)
+        {
+            $tmp = array_pop(explode("/", $tmp));
+            if ($tmp != "Admin") {
+                $template = new Template($tmp);
+                if ($template && $template->IsValid)
+                    $out[] = $template;
+            }
+        }
+        return $out;
+    }
+
+    public function getOpenTemplate()
+    {
+        $templates = $this->getTemplates();
+        foreach ($templates as $template)
+            if ($template->Name == $_GET["name"])
+                return $template;
+        return null;
+    }
 
 
     public function action()
@@ -236,28 +263,33 @@ class AdminController extends Controller
         $this->action();
         if (in_array($_GET["open"], $this->_OpenList))
         {
-            $this->view("Admin/Header");
+            $this->view("../Admin/Header");
 
             switch($_GET["open"])
             {
-                case null: $this->view("Admin/MainView"); break; break;
-                case "menu_manager": $this->view("Admin/MenuManagerView");  break; break;
-                case "menu_manager_add": $this->view("Admin/MenuManagerAddView");  break; break;
-                case "side_manager": $this->view("Admin/SideManagerView");  break; break;
-                case "side_manager_add": $this->view("Admin/SideManagerAddView"); break; break;
+                case null: $this->view("../Admin/MainView"); break;
+                case "menu_manager": $this->view("../Admin/MenuManagerView");  break;
+                case "menu_manager_add": $this->view("../Admin/MenuManagerAddView");  break;
+                case "side_manager": $this->view("../Admin/SideManagerView"); break;
+                case "side_manager_add": $this->view("../Admin/SideManagerAddView"); break;
                 case "side_manager_change": 
                     $this->ChangeSideItemId = $_REQUEST["id"]; 
                     if (Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId))
-                        $this->view("Admin/SideManagerChangeView"); 
-                    break; 
-                
+                        $this->view("../Admin/SideManagerChangeView");               
                 break;
-                case "page_manager": $this->view("Admin/PageManagerView"); break; break;
-                case "post_manager": $this->view("Admin/PostManagerView"); break; break;
-                case "parametrs_settings": $this->view("Admin/ParametrsSettingsView"); break; break;
-                case "design_settings": $this->view("Admin/DesignSettingsView"); break; break;
+                case "page_manager": $this->view("../Admin/PageManagerView"); break;
+                case "post_manager": $this->view("../Admin/PostManagerView"); break;
+                case "parametrs_settings": $this->view("../Admin/ParametrsSettingsView"); break;
+                case "design_settings": 
+                    if ($_GET["name"] && file_exists("../App/Views/".$_GET["name"]."/Info.xml"))
+                    {
+                        $this->view("../Admin/TemplateView");
+                    }
+                    else
+                        $this->view("../Admin/DesignSettingsView");
+                break;
             }
-            $this->view("Admin/Footer");
+            $this->view("../Admin/Footer");
             foreach ($this->Messages as $Message)
                 $Message->show();
         }

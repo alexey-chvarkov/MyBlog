@@ -24,7 +24,7 @@
     </div>
 
     <div class="icontainer">
-        <textarea id="content" class="tbx" name="content" cols="47" rows="12">
+        <textarea id="content" class="tbx-code" name="content" cols="67" rows="16">
             <?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Content; ?>
         </textarea>
     </div>

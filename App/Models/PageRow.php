@@ -80,7 +80,7 @@ class PageRow extends Page
 
 	public function getValue()
 	{
-		return new Post($this->PageId, $this->Title, $this->Alias, $this->Content, $this->DateCreated, $this->Views);
+		return new Page($this->PageId, $this->Title, $this->Alias, $this->Content, $this->DateCreated, $this->Views);
 	}
 
 

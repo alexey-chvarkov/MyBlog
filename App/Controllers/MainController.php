@@ -15,6 +15,7 @@ class MainController extends Controller
     public function main()
     {
         $this->header();
+        $this->view("Carousel");
         $this->view("MainView");
         $this->footer();
     }

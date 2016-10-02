@@ -19,10 +19,13 @@ abstract class Controller
 
     protected $Messages;
 
+    protected $TemplateName;
+
     protected function __construct()
     {
         $this->MenuItems = Application::$Database->MenuItems;
         $this->SideItems = Application::$Database->SideItems;
+        $this->TemplateName = Application::$Configuration->Template;
     }
 
     protected function setMeta($metatitle, $charset, $decription, $keywords, $author)
@@ -41,17 +44,17 @@ abstract class Controller
 
     protected function header()
     {
-        include '../App/Views/Header.php';
+        include '../App/Views/'.$this->TemplateName.'/Header.php';
     }
 
     protected function view($viewName)
     {
-        include '../App/Views/'.$viewName.'.php';
+        include '../App/Views/'.$this->TemplateName.'/'.$viewName.'.php';
     }
 
     protected function footer()
     {
-        include '../App/Views/Footer.php';
+        include '../App/Views/'.$this->TemplateName.'/Footer.php';
     }
 
     protected abstract function main();

@@ -28,13 +28,13 @@
                     </li>
                 </a>
                     <li <?php if ($_GET['open'] == "side_manager") echo "class='col-small-select-item'"; ?>>
-                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Side
+                        <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=side_manager">Widgets
                             <span><?php echo Application::$Database->SideItems->count(); ?></span>
                         </a>
                     </li>
                     <li <?php if ($_GET['open'] == "page_manager") echo "class='col-small-select-item'"; ?>>
                         <a href="?p=<?php echo Application::$Configuration->AdminPage; ?>&open=page_manager">Pages
-                            <span>110</span>
+                            <span><?php echo Application::$Database->Pages->count(); ?></span>
                         </a>
                     </li>
                     <li>
