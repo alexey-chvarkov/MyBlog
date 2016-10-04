@@ -13,6 +13,9 @@ use App\Models\MenuItemCollection as MenuItemCollection;
 use App\Models\SideItem as SideItem;
 use App\Models\SideItemCollection as SideItemCollection;
 
+use App\Models\Page as Page;
+use App\Models\PageCollection as PageCollection;
+
 class AdminController extends Controller
 {
     
@@ -28,7 +31,8 @@ class AdminController extends Controller
     private $_OpenList = array(null,
         "menu_manager", "side_manager", "page_manager", 
         "post_manager", "parametrs_settings", "design_settings",
-        "menu_manager_add", "side_manager_add", "side_manager_change"
+        "menu_manager_add", "side_manager_add", "side_manager_change",
+        "page_manager_add", "page_manager_change"
     );
 
     public function __construct()
@@ -224,6 +228,68 @@ class AdminController extends Controller
     }
 
 
+    //Page Events
+
+    private function pageAdd()
+    {
+        if ($_REQUEST["new_name"] && $_REQUEST["new_title"] && $_REQUEST["new_content"])
+        {
+            try {
+                Application::$Database->Pages->insert(new Page(null, $_REQUEST["new_title"], $_REQUEST["new_name"], $_REQUEST["new_content"]));          
+                $this->setLocation("?p=$this->AdminPageName&open=page_manager");
+            }
+            catch (Exception $e) {
+                $this->Messages[] = new Message("Not added page.", "Enter unique page name", "red");
+            }
+        }
+    }
+
+    private function pageChange($id)
+    {
+        $this->setLocation("?p=$this->AdminPageName&open=page_manager_change&id=$id");
+    }
+
+    private function pageSave($id)
+    {
+        if ($_REQUEST["title"] && $_REQUEST["name"] &&  $_REQUEST["content"] && $id && Application::$Database->Pages->getPageById($id))
+        {
+            
+            Application::$Database->Pages->getPageById($id)->Title = $_REQUEST["title"];
+            Application::$Database->Pages->getPageById($id)->Alias = $_REQUEST["name"];
+            Application::$Database->Pages->getPageById($id)->Content = $_REQUEST["content"];
+            Application::$Database->Pages->__update();
+            $this->Messages[] = new Message("Changed side item.", "Item '".$_REQUEST["title"]."' successfully changed.");
+            $this->setLocation("?p=$this->AdminPageName&open=page_manager");
+        }
+    }
+
+    private function pageDeleteSelected()
+    {
+        $deleted = 0;
+        foreach ($_REQUEST as $key => $value)
+        {
+            $params = explode("_", $key);
+            if ($params[0] == "side-item-select" && $params[1] && $value == "on") 
+            {
+                $this->pageDelete($params[1], false);
+                $deleted++;
+            }
+        }
+        if ($deleted > 0)
+            $this->Messages[] = new Message("Deleted side item.", "Selected $deleted menu items successfully deleted.", "red");       
+    }
+
+    private function pageDelete($id, $showMessage=true)
+    {
+        $Page = Application::$Database->Pages->getPageById($id);
+        if ($Page)
+        {
+            $getTitle = $Page->getValue()->Title;
+            $Page->remove();
+            if ($showMessage)
+                $this->Messages[] = new Message("Deleted side item.", "Item '$getTitle' successfully deleted.", "red");
+        }
+    }
 
     //Templates
 
@@ -278,6 +344,12 @@ class AdminController extends Controller
                         $this->view("../Admin/SideManagerChangeView");               
                 break;
                 case "page_manager": $this->view("../Admin/PageManagerView"); break;
+                case "page_manager_add": $this->view("../Admin/PageManagerAddView"); break;
+                case "page_manager_change": 
+                    $this->ChangePageId = $_REQUEST["id"]; 
+                    if (Application::$Database->Pages->getPageById($this->ChangePageId))
+                        $this->view("../Admin/PageManagerChangeView");               
+                break;
                 case "post_manager": $this->view("../Admin/PostManagerView"); break;
                 case "parametrs_settings": $this->view("../Admin/ParametrsSettingsView"); break;
                 case "design_settings": 
@@ -319,16 +391,19 @@ class AdminController extends Controller
             $id = $params[1];
             switch ($name)
             {
-                case "menu-item-inc": $this->menuItemPreoritetyInc($id); break; break;
-                case "menu-item-dec": $this->menuItemPreoritetyDec($id); break; break;
-                case "menu-item-change": $this->menuItemChange($id) ; break; break;
-                case "menu-item-save": $this->menuItemSave($id); break; break;
-                case "menu-item-del": $this->menuItemDelete($id); break; break;
+                case "menu-item-inc": $this->menuItemPreoritetyInc($id); break;
+                case "menu-item-dec": $this->menuItemPreoritetyDec($id); break;
+                case "menu-item-change": $this->menuItemChange($id); break;
+                case "menu-item-save": $this->menuItemSave($id); break;
+                case "menu-item-del": $this->menuItemDelete($id); break;
 
-                case "side-item-inc": $this->sideItemPreoritetyInc($id); break; break;
-                case "side-item-dec": $this->sideItemPreoritetyDec($id); break; break;
-                case "side-item-del": $this->sideItemDelete($id); break; break;
-                case "side-item-change": $this->sideItemChange($id); break; break;
+                case "side-item-inc": $this->sideItemPreoritetyInc($id); break;
+                case "side-item-dec": $this->sideItemPreoritetyDec($id); break;
+                case "side-item-del": $this->sideItemDelete($id); break;
+                case "side-item-change": $this->sideItemChange($id); break;
+
+                case "page-change": $this->pageChange($id); break;
+                case "page-del": $this->pageDelete($id); break;
             }
         }
         if (count($params) == 1)
@@ -337,9 +412,12 @@ class AdminController extends Controller
             {
                 case "menu-item-add": $this->menuItemAdd(); break;
                 case "side-item-add": $this->sideItemAdd(); break;
+                case "page-add": $this->pageAdd(); break;
                 case "menu-delete-selected": $this->menuDeleteSelectedItems(); break;
                 case "side-delete-selected": $this->sideDeleteSelectedItems(); break;
-                case "side-item-save": $this->sideItemSave($_REQUEST["id"]); break; break;
+                case "side-item-save": $this->sideItemSave($_REQUEST["id"]); break;
+                case "page-save": $this->pageSave($_REQUEST["id"]); break;
+                case "page-delete-selected": $this->pageDeleteSelected(); break;
             }
         } 
     }

@@ -105,7 +105,10 @@ input[type="submit"]:hover { background: #A52A2A; color: #fff; }
 .menuitem, .sideitem, .page, .postitem { width: 100%; height: auto; padding: 15px; box-sizing: border-box; border-bottom: solid 1px rgb(180, 185, 190 ); }
 .menuitem-col, .sideitem-col, .page-col, .postitem-col { width: calc(50% - 90px); height: auto; box-sizing: border-box; padding: 0; float: left; font-size: 14pt; }
 .menuitem-nav, .sideitem-nav, .page-nav, .postitem-nav { width: 180px; height: auto; box-sizing: border-box; padding: 0; float: right; }
-.sideitem-col, .page-col { width: calc(100% - 180px); } 
+.page-col { width: calc(50% - 45px); }
+.page-nav { width: 90px; }
+.sideitem-col { width: calc(100% - 180px); } 
+.page-col { width: calc(100% - 90px); } 
 .menuitem-nav input, .sideitem-nav input, .page-nav input { margin: 0; }
 
 

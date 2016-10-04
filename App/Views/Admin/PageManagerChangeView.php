@@ -1,13 +1,15 @@
 <?php use App\Application as Application; ?>
 
 <div class="container">
-    <h1>Change widget</h1>
+    <h1>Change page</h1>
 </div>
 <form name="add_menu_item" method="post">
     <div class="icontainer">
-        <span>Title: </span><input class="tbx" type="text"  name="title" value="<?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Title; ?>" />
+        <span>Name: </span><input class="tbx" type="text"  name="name" value="<?php echo Application::$Database->Pages->getPageById($this->ChangePageId)->getValue()->Alias; ?>" />
     </div>
-
+    <div class="icontainer">
+        <span>Title: </span><input class="tbx" type="text"  name="title" value="<?php echo Application::$Database->Pages->getPageById($this->ChangePageId)->getValue()->Title; ?>" />
+    </div>
     <div class="container" style="float: left;">     
         <input type="button" onclick="appendInContent('<h1></h1>')" class="btn-gray btn-size-small" value="H1" />
         <input type="button" onclick="appendInContent('<h2></h2>')" class="btn-gray btn-size-small" value="H2" />
@@ -24,10 +26,10 @@
     </div>
 
     <div class="icontainer">
-        <textarea id="content" class="tbx-code" name="content" cols="67" rows="16"><?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Content; ?></textarea>
+        <textarea id="content" class="tbx-code" name="content" cols="67" rows="16"><?php echo Application::$Database->Pages->getPageById($this->ChangePageId)->getValue()->Content; ?></textarea>
     </div>
     <div class="icontainer">
-        <input name="side-item-save" class="btn-green" type="submit" value="✎ Save" />
+        <input name="page-save" class="btn-green" type="submit" value="✎ Save" />
         <input onclick="history.back();" class="btn-gray" type="submit" value="◄ Back" />
     </div>
 </form>

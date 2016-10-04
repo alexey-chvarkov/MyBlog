@@ -1,11 +1,12 @@
-<?php use App\Application as Application; ?>
-
 <div class="container">
-    <h1>Change widget</h1>
+    <h1>Add new page</h1>
 </div>
-<form name="add_menu_item" method="post">
+<form name="add_page" method="post">
     <div class="icontainer">
-        <span>Title: </span><input class="tbx" type="text"  name="title" value="<?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Title; ?>" />
+        <span>Name: </span><input class="tbx" type="text" name="new_name" />
+    </div>
+    <div class="icontainer">
+        <span>Title: </span><input class="tbx" type="text" name="new_title" />
     </div>
 
     <div class="container" style="float: left;">     
@@ -24,10 +25,10 @@
     </div>
 
     <div class="icontainer">
-        <textarea id="content" class="tbx-code" name="content" cols="67" rows="16"><?php echo Application::$Database->SideItems->getSideItemById($this->ChangeSideItemId)->getValue()->Content; ?></textarea>
+        <textarea id="content" class="tbx" name="new_content" cols="47" rows="12"></textarea>
     </div>
     <div class="icontainer">
-        <input name="side-item-save" class="btn-green" type="submit" value="✎ Save" />
+        <input name="page-add" class="btn-green" type="submit" value="✚ Add" />
         <input onclick="history.back();" class="btn-gray" type="submit" value="◄ Back" />
     </div>
 </form>

@@ -70,6 +70,38 @@ function ms_disactive_panel() {
     document.getElementById("delete-selected").setAttribute("type", "button");
 }
 
+//Page items
+
+function pg_count() {
+    return document.getElementsByName("page").length;
+}
+
+function pg_getValueCheckBox(id) {
+    return document.getElementById("page-check"+id).checked;
+}
+
+function pg_setValueCheckBox(id, value) {
+    return document.getElementById("page-check"+id).checked = value;
+}
+
+function pg_has_sellect() {
+    for (var i = 1; i <= pg_count(); i++) 
+        if (document.getElementById("page-check"+i).checked)
+            return true;
+    return false;
+}
+
+function pg_active_panel() {
+    document.getElementById("delete-selected").setAttribute("class", "btn-red");
+    document.getElementById("delete-selected").setAttribute("type", "submit");
+}
+
+function pg_disactive_panel() {
+    document.getElementById("delete-selected").setAttribute("class", "btn-gray");
+    document.getElementById("delete-selected").setAttribute("type", "button");
+}
+
+
 //Events
 
 function mm_all_check_click()
@@ -103,6 +135,21 @@ function ms_sideitem_check_onchange()
         ms_disactive_panel()
 }
 
+
+function pg_all_check_click()
+{
+    for (var i = 1; i <= pg_count(); i++)
+        pg_setValueCheckBox(i, document.getElementById("all-check").checked);
+    pg_page_check_onchange();
+}
+
+function pg_page_check_onchange()
+{
+    if (pg_has_sellect())
+        pg_active_panel();
+    else
+        pg_disactive_panel()
+}
 
 
 function appendInContent(html) {
