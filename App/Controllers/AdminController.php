@@ -7,6 +7,8 @@ use App\Core\Message as Message;
 use App\Core\Controller as Controller;
 use App\Core\Template as Template;
 
+use App\Controllers\AdminEditorController as AdminEditorController;
+
 use App\Models\MenuItem as MenuItem;
 use App\Models\MenuItemCollection as MenuItemCollection;
 
@@ -32,7 +34,7 @@ class AdminController extends Controller
         "menu_manager", "side_manager", "page_manager", 
         "post_manager", "parametrs_settings", "design_settings",
         "menu_manager_add", "side_manager_add", "side_manager_change",
-        "page_manager_add", "page_manager_change"
+        "page_manager_add", "page_manager_change", "editor"
     );
 
     public function __construct()
@@ -326,6 +328,11 @@ class AdminController extends Controller
 
     public function main()
     {
+        if ($_GET["open"] == "editor" && $_GET["file"] && file_exists($_GET["file"]))
+        {
+            new AdminEditorController(); 
+            return;
+        }
         $this->action();
         if (in_array($_GET["open"], $this->_OpenList))
         {
